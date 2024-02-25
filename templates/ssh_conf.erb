@@ -1,0 +1,13 @@
+<%- servers.each do|type, server| -%>
+<%- server.each do |name, specs| -%>
+Host <%=  name %>
+  HostName <%= specs['ip'] %>
+  User <%= default_user %>
+  IdentityFile <%= ssh_full_key_path %>
+
+<%- end -%>
+<%- end -%>
+Host *
+  StrictHostKeyChecking no
+  UserKnownHostsFile /dev/null
+  
